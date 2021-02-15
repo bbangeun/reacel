@@ -19,9 +19,7 @@ class App extends Component {
       const alpha = 90 //z = 90
       let columns = []
       let rows = []
-      let idx = 0
       let alphaIdx = 65 //a = 65
-      let fieldNm 
 
       while(true) {
         //초기 rownum 세팅
@@ -30,12 +28,13 @@ class App extends Component {
             headerName: '#',
             colId: 'rowNum',
             valueGetter: 'node.id',
-            width: 80
+            width: 50
           })
         } 
         columns.push({
           field: String.fromCharCode(alphaIdx),
           editable: true,
+          resizable: true,
           width: 60, 
           rowSelection: 'single',
           rowBuffer: 0,
@@ -46,12 +45,10 @@ class App extends Component {
       }
 
       columns.forEach(element => {
-        fieldNm = columns[idx].field
         rows.push({
           fieldNm: '',
-          columnId: columns[idx].field + idx,
+          columnId: '',
         })
-        idx ++
       })
 
       // TODO issue : setState 여러건 한번에 처리시 오류남 이유 찾으면 주석으로 작성하기
@@ -66,15 +63,15 @@ class App extends Component {
     //cell 그리면서 ID값 부여
     drawCellRenderer = (e) => {
       e.data.columnId = e.colDef.field + e.rowIndex
+      return e.value
     }
 
     getCellId = (e) => {
-      debugger
       alert(e.data.columnId)  //cell 수정시, ID값 확인용 alert
     }
 
     setCellValue = (e) => {
-      console.log("test")
+
     }
     
     //click시 cell ID 배열에 push
