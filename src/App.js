@@ -74,7 +74,7 @@ class App extends Component {
     }
 
     setCellValue = (e) => {
-      
+      console.log("test")
     }
     
     //click시 cell ID 배열에 push
