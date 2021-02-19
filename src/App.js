@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import './App.css';
 import { AgGridReact } from 'ag-grid-react';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { RangeSelectionModule } from '@ag-grid-enterprise/range-selection';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-balham.css';
 
@@ -10,6 +12,7 @@ class App extends Component {
     constructor(props) {
         super(props)
         this.state = {
+            modules : [ClientSideRowModelModule, RangeSelectionModule],
             columnDefs: [],
             rowData: []
         }
@@ -92,14 +95,15 @@ class App extends Component {
                 style={{ height: '3000px', width: '6000px' }}
             >
                 <AgGridReact
+                    modules={this.state.modules}
                     columnDefs={this.state.columnDefs}
                     rowData={this.state.rowData}
                     onCellValueChanged={this.getCellId}
+                    enableRangeSelection={true}
                     onCellClicked={this.setCellArray}>
                 </AgGridReact>
             </div>
           </Fragment>
-            
         );
     }
 }
