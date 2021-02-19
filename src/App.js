@@ -12,7 +12,7 @@ class App extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            modules : [ClientSideRowModelModule, RangeSelectionModule],
+            modules : [ClientSideRowModelModule, RangeSelectionModule], //jh.won 드래그 관련 모듈 추가.
             columnDefs: [],
             rowData: []
         }
@@ -99,7 +99,7 @@ class App extends Component {
                     columnDefs={this.state.columnDefs}
                     rowData={this.state.rowData}
                     onCellValueChanged={this.getCellId}
-                    enableRangeSelection={true}
+                    enableRangeSelection={true} //jh.won 드래그 기능 추가.
                     onCellClicked={this.setCellArray}>
                 </AgGridReact>
             </div>
